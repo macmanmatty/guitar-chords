@@ -898,8 +898,6 @@ public void setInstrument(Instrument instrument){ // sets new instrument and reg
 	 tuning=instrument.getTuning();
 	frets=instrument.getFrets();
 		 strings=tuning.size();
-		 strings=tuning.size();
-		 strings=tuning.size();
 		 int minFrets=1;
 		 for (int count=0; count<strings; count++) {
 			 maxFrets=tuning.get(count).getFrets();
