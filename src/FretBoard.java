@@ -568,20 +568,15 @@ private void displayChordFingerings(ArrayList<Chord> positions) { // displays th
 	 int size=positions.size();
 		HBox gridPane= new HBox();
 	 if(size>0) {
-	 int counter=0;
 	gridPane.setStyle("  -fx-padding: 10; -fx-spacing: 10;");
-	 out:
 		 for (int count=0; count<size; count++) {
- if (counter==size-1) {
-				 break out;
-			 }
+
  if (showChordNotes==true) {
 	 gridPane.getChildren().add(new ChordImage().getChordImageWithNotes(positions.get(count),maxFrets, strings, tuning, showFullInstrumentBoard, maxFretDistance*2));
  }
  else {
 	 gridPane.getChildren().add(new ChordImage().getChordImage(positions.get(count), maxFrets, strings, tuning, showFullInstrumentBoard, maxFretDistance*2));
  }
-			 counter++;
 		 }
 	 }
 	VBox pane = new VBox();
@@ -714,7 +709,7 @@ private ArrayList<Chord> makeChord(ArrayList<Integer> chordNotes, int start, Arr
 	 int [] sizes= new int [notePlaces.size()];
 	 int [] counterArray= new int [notePlaces.size()];
 	 int totalCombos=1;
-	 for (int count=0; count<strings; count++) { // calculates the total number of chords
+	 for (int count=0; count<strings; count++) { // calculates the total number of chords possible from the positions
 		 sizes[count]=notePlaces.get(count).size();
 		 totalCombos=totalCombos*notePlaces.get(count).size();
 
