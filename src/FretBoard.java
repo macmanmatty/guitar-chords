@@ -37,6 +37,8 @@ CheckBox sharpBox;
 	HBox scaleHeader;
 	Button settingsButton;
 	Settings settings;
+	Button instructions;
+	
 	ChoiceBox<String> scaleBox; // choice box for chord modifer name
 CheckBox showNotes;
 	Button findChord;
@@ -189,6 +191,8 @@ settingsButton= new Button("Settings");
 		 showScales=new Button("Show Scale");
 		 showArpgs= new Button("Show Arpeggos");
 		 about= new Button ("About");
+		 instructions= new Button ("Instructions");
+
 		 showScales.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
@@ -213,6 +217,12 @@ settingsButton= new Button("Settings");
 				@Override
 				public void handle(ActionEvent event) {
 					String text= "Guitar Chords version 1.0 By Jesse Matty";
+					new OptionPane().showOptionPane(text, "ok");
+				}});
+		 instructions.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					String text= "Select  a  chord root  bass note and modifer from the drop down menus and then click the  'Find Chord' button to see all the shapes you can  use play it on your selected instrument.  \n or click  the 'Show Arpeggo' button to see all of the notes up and own the fretboard. The  allow inversions check box  will allow the bass note to be any note of  the chord not just the root. \n  The show notes in chord button will show the actual notes in the chord at each fretted position. \n  To change the tuning use the settings button there you change the number of strings, the tuning,  the number of frets each string has, and what fret they start on. \n Click the 'Save Changes' button twice  to save your tuning then click the 'Exit' button  to return  to the fretboard window .  ";
 					new OptionPane().showOptionPane(text, "ok");
 				}});
 		 sharpBox=new CheckBox();
@@ -267,7 +277,7 @@ settingsButton= new Button("Settings");
 			Label inversionsLabel= new Label("Allow Inversions");
 			Label showNotesAsSharp= new Label("Show Notes as Sharp");
 			scaleHeader= new HBox(scaleLabel);
-		 menuBox= new HBox(noteLabel, noteBox,  chordLabel, modiferBox,  bassNoteLabel, bassBox, inversionsLabel, allowInversions,  showNotes, showNotesLabel, sharpBox, showNotesAsSharp,   findChord, showArpgs ,  settingsButton, about);
+		 menuBox= new HBox(noteLabel, noteBox,  chordLabel, modiferBox,  bassNoteLabel, bassBox, inversionsLabel, allowInversions,  showNotes, showNotesLabel, sharpBox, showNotesAsSharp,   findChord, showArpgs ,  settingsButton, about, instructions);
 		 scaleHBox= new HBox(scaleNoteLabel, scaleNoteBox, scaleNameLabel, scaleBox, showScales);
 	}
 	private void changeSettings(){

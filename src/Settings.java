@@ -91,6 +91,8 @@ instruments.add(new TenorBanjo(sharp));
 				}
 				
 				fretBoard.setInstrument(instrument);
+        		showSettingsWindow();
+
 	
 			}});
 		sharpBox=new CheckBox();
@@ -146,7 +148,7 @@ instruments.add(new TenorBanjo(sharp));
 
 	}
 	
-	public void showSettingsWindow() {
+	public void showSettingsWindow() {// shows the settings window
 		VBox mainBox= new VBox();
 		mainBox.getChildren().add(buttonHeader);
 		tuningBox= new VBox();
