@@ -25,8 +25,8 @@ public class Settings {
 	FretBoard fretBoard;
 	CheckBox sharpBox;
 	HBox buttonHeader;
-	ChoiceBox<Instrument> instrumentBox;
-	ChoiceBox<Integer> maxFretBox;
+	ChoiceBox<Instrument> instrumentBox; // instrument selection
+	ChoiceBox<Integer> maxFretBox; // maxfret distance selcetion
 	
 	VBox tuningBox;
 	ArrayList<NumberedTextField> startFret= new ArrayList<>();
@@ -242,10 +242,25 @@ this.startFret.add(startFret);
 		noteBoxes.add(noteBox);
 		octaveBoxes.add(octaveBox);
 		Label label= new Label("String number "+(number2));
+		Label sNote= new Label(" Note: ");
+		Label sOctave= new Label("Octave: ");
+
+		Label frets= new Label(" Number Of Frets:");
+		Label startFretNumber= new Label("Start Fret: ");
+		
+		
 		choiceBox.getChildren().add(label);
+		choiceBox.getChildren().add(sNote);
+
 		choiceBox.getChildren().add(noteBox);
+		choiceBox.getChildren().add(sOctave);
+
 		choiceBox.getChildren().add(octaveBox);
+		choiceBox.getChildren().add(frets);
+
 		choiceBox.getChildren().add(stringFrets.get(number));
+		choiceBox.getChildren().add(startFretNumber);
+
 		choiceBox.getChildren().add(startFret.get(number));
 
 		
