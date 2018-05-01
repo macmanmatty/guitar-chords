@@ -19,23 +19,27 @@ public class Settings {
 	Stage stage;
 	OctaveBox octaveBox;
 	NoteBox noteBox;
-	HBox topBox= new HBox();
-	HBox bottomBox= new HBox();
-	Button exit; 
-	FretBoard fretBoard;
-	CheckBox sharpBox;
-	HBox buttonHeader;
+	HBox topBox= new HBox();// the top hbox with the buttons;
+	
+	HBox bottomBox= new HBox(); //the bottom hbox;
+	
+	Button exit;  // exits back to fretboard;
+	
+	FretBoard fretBoard; // the fretboard instance;
+	
+	CheckBox sharpBox;// changes whether the notes are displayed as sharps or flats
+	HBox buttonHeader; // header box for the buttons;
+	
 	ChoiceBox<Instrument> instrumentBox; // instrument selection
 	ChoiceBox<Integer> maxFretBox; // maxfret distance selcetion
 	
-	VBox tuningBox;
-	ArrayList<NumberedTextField> startFret= new ArrayList<>();
-	ArrayList<NumberedTextField> stringFrets= new ArrayList<>();
-CheckBox harpString;
+	VBox tuningBox; // the box for selecting the strings tunings notes  and octaves and frets 
+	ArrayList<NumberedTextField> startFret= new ArrayList<>();// textbox for the startinf frets of each string
+	ArrayList<NumberedTextField> stringFrets= new ArrayList<>(); // text box for the ending fret of each string
 
-	Instrument instrument;
-	Button newInstrument;
-	Button applyChanges;
+	Instrument instrument; // the selected instrument
+	Button newInstrument; // creates a new instrument
+	Button applyChanges; // applies the changes 
 	NoteConversion conversion= new NoteConversion();
 	boolean sharp;
 ArrayList<NoteBox> noteBoxes= new ArrayList<NoteBox>();
@@ -50,6 +54,8 @@ instruments.add(new Bass(sharp));
 instruments.add(new Banjo(sharp));
 instruments.add(new Mandolin(sharp));
 instruments.add(new TenorBanjo(sharp));
+instruments.add(new EightStringGuitar(sharp));
+
 
 		instrumentBox= new ChoiceBox<Instrument>(FXCollections.observableArrayList(instruments));
 		instrumentBox.getSelectionModel().selectedIndexProperty().addListener( new ChangeListener<Number>() {
