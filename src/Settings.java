@@ -57,6 +57,7 @@ instruments.add(new TenorBanjo(sharp));
 instruments.add(new EightStringGuitar(sharp));
 
 
+
 		instrumentBox= new ChoiceBox<Instrument>(FXCollections.observableArrayList(instruments));
 		instrumentBox.getSelectionModel().selectedIndexProperty().addListener( new ChangeListener<Number>() {
 			@Override
