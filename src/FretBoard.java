@@ -712,7 +712,9 @@ private ArrayList<Chord> makeChord(ArrayList<Integer> chordNotes, int start, Arr
 	else {
 	root=false;
 	}
+	
 	for (int count=0; count<strings; count++) {
+		
 		ArrayList<Position> position=makePosition(count, start,  chordNotes, up.get(count), tuning.get(count).getFrets(),tuning.get(count).getStartFret(), maxFretDistance ); // calculates the positions;
 		notePlaces.add(position);
 	}
@@ -814,9 +816,12 @@ private ArrayList<Chord> makeChord(ArrayList<Integer> chordNotes, int start, Arr
 					 previousNoteFret=noteFret;
 					 previousNoteNumber=noteNumber;
 				}
-				if (allChordNotes==chordNotes.size()  && stringGap==false && sameNotes==false && rootNote==false && highestFret-lowestFret<=maxFretDistance-1) {
+				if (allChordNotes==chordNotes.size()  && stringGap==false && sameNotes==false && rootNote==false&& (highestFret-lowestFret<=maxFretDistance )) {// chord is playable add it to the array list for chords to display
 					chords.add(new Chord(chordPositions, lowestFret, lowestFret, unhitStrings, modifer, bassNoteNumber));
+
+				
 				}
+
 				 for(int counter2 =size-1; counter2>=0; counter2--) {
 		            if(counterArray[counter2] + 1 < sizes[counter2]) {
 		                counterArray[counter2]++;
@@ -836,8 +841,8 @@ private ArrayList<Position> makePosition(int string, int start, ArrayList<Intege
 		out:
 			if(up==1) {
 		for (int count=start; count<maxFretDistance+start; count++) { // finds all positions that match the chord notes up the neck. 
-			if (count>=frets) {
-				if (positions.size()==0) {
+			if (count>=frets-1) {
+				if (positions.size()==0) { // if not matching notes were found  add unhit string position
 					positions.add(new Position(string, -1, new Note (-1,-1, "X", -1, -1) ));
 					}
 				break out;
@@ -865,7 +870,7 @@ private ArrayList<Position> makePosition(int string, int start, ArrayList<Intege
 			}
 			}
 			else {//does the same thing as for loop number 1 but going down the neck instead.
-				if(start>=frets)	{
+				if(start>=frets-1)	{
 					positions.add(new Position(string, -1, new Note (-1,-1, "X", -1, -1) ));
 					return  positions;
 				}
@@ -923,7 +928,7 @@ public void setInstrument(Instrument instrument){ // sets new instrument and reg
 				 tuning.get(count).setStartFret(tuning.get(count).getStartFret()-minFrets+1);
 			 }
 		 }
-		 instrument.setFrets(maxFrets+1);
+		 instrument.setFrets(maxFrets+2);
 		 for (int count=0; count<strings;  count++) {
 			  int note=tuning.get(count).getStringNote().getNoteNumber();	
 			  int octave=tuning.get(count).getStringNote().getOctave();
